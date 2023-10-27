@@ -6,11 +6,22 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs18.x
-
+  region: us-east-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - rekognition:DetectLabels
+          Resource: "*"
+        - Effect: Allow
+          Action:
+            - translate:TranslateText
+          Resource: "*"
 functions:
-  api:
-    handler: index.handler
+  image-analysis:
+    handler: dist/index.main
     events:
       - httpApi:
-          path: /
+          path: /analyse
           method: get
