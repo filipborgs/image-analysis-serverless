@@ -1,3 +1,5 @@
+import { badRequest, ok } from './utils';
+
 export class Handler {
   constructor(
     private readonly reko: any,
@@ -6,9 +8,10 @@ export class Handler {
 
   async main(event: any): Promise<any> {
     console.log('event', event);
-    return {
-      statusCode: 200,
-      body: 'teste'
-    }
+
+    const { imageUrl } = event.queryStringParameters
+    if (!imageUrl) return badRequest('An IMG is required!')
+
+    return ok('IMG')
   }
 }
