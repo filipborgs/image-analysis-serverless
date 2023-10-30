@@ -42,6 +42,7 @@ export const badRequest = (body: any, headers?: object): HttpResponse => ({
 })
 
 export const serverError = (_error: any, headers?: object): HttpResponse => {
+  console.log(_error)
   return {
     statusCode: 500,
     headers,
