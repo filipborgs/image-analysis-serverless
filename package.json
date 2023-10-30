@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig-build.json",
-    "test": "jest --passWithNoTests --runInBand --silent --no-cache --forceExit",
-    "test:watch": "npm run test -- --watch",
+    "test": "jest --passWithNoTests --runInBand --no-cache --forceExit",
+    "test:watch": "npm run test -- --watchAll",
     "invoke": "npm run build && sls invoke -f image-analysis",
     "invoke:local": "npm run build && sls invoke local -f image-analysis"
   },
@@ -14,7 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1482.0"
+    "aws-sdk": "^2.1482.0",
+    "axios": "^1.6.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.6",
